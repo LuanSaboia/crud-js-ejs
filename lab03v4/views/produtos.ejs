@@ -2,7 +2,8 @@
   <h1>Produtos</h1>
   <a href="/produto-novo"><button>Cadastrar Produto</button></a>
   <br><br>
-  <table border>
+  <%- include('produto/tableProduct'); %>
+  <!-- <table border>
     <thead>
       <tr>
         <th>ID</th>
@@ -17,7 +18,7 @@
         <% produto.forEach(product=> { %>
           <tr>
             <td>
-              <%= product.id %>
+              <a href=""><%= product.id %></a>
             </td>
             <td>
               <%= product.dados %>
@@ -37,7 +38,7 @@
           </tr>
           <% }) %>
     </tbody>
-  </table>
+  </table> -->
 
   <p style="background-color: antiquewhite;"><a href="/home">Inicio</a></p>
   <%- include('template/footer'); %>

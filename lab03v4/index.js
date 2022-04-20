@@ -18,6 +18,7 @@ app.listen(port, () => {
 app.get("/home", (req, res) => {
   res.render("home", { title: "Lab MPA", message: "Bem vindo ao Lab MPA" });
 });
+
 app.get("/categorias", (req, res) => {
   res.render("categorias", {
     title: "Lab MPA",
@@ -31,6 +32,12 @@ app.post("/categoria-salvar", (req, res) => {
 app.get("/categoria-deletar/:chave", (req, res) => {
   let removeCategoria = category.deleteCategoria(req.params.chave);
   res.render("categorias", { title: "Lab MPA", categoria: removeCategoria });
+});
+app.get("tableCategory", (req, res) => {
+  res.render("categorias", {
+    title: "Lab MPA",
+    categoria: category.getCategoria(),
+  });
 });
 
 app.get("/produtos", (req, res) => {
@@ -69,4 +76,29 @@ app.post("/produto-editar/:id", (req, res) => {
   //   editProduto: editarProduto,
   //   categoria: category.getCategoria(),
   // });
+});
+app.get("/produto-listar/:id", (req, res) => {
+  //let editarProduto = product.editProduto(req.body.id, req.params.id);
+  let editarProduto = product.getProdutoId(req.params.id);
+  res.render("produto-listar", {
+    title: "Lab MPA",
+    //produto: editarProduto,
+    produto: product.getProduto(),
+    editProduto: editarProduto,
+  });
+});
+app.post("/produto-listar/:id", (req, res) => {
+  let editarProduto = product.editProduto(req.body, req.params.id);
+  res.redirect("/produtos");
+  // res.render("produto-editar", {
+  //   title: "Lab MPA",
+  //   editProduto: editarProduto,
+  //   categoria: category.getCategoria(),
+  // });
+});
+app.get("tableProduct", (req, res) => {
+  res.render("produtos", {
+    title: "Lab MPA",
+    produto: product.getProduto(),
+  });
 });

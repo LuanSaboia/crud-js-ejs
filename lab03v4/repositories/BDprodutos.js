@@ -39,6 +39,13 @@ class Product {
     
     return produto[0];
   }
+
+  listProduto(product, id) {
+    arrayProdutos = arrayProdutos.map((produto) => {
+      return produto.id == id ? product : produto;
+    });
+    return arrayProdutos;
+  }
 }
 
 module.exports = new Product();

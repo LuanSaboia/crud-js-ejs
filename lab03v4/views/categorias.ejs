@@ -8,10 +8,11 @@
     <button type="submit">Salvar</button>
   </form>
 
-  <%- include('template/modalAction'); %>
-
     <br><br>
-    <table border>
+    <%- include('categoria/tableCategory'); %>
+    <br><br>
+
+    <!-- <table border>
       <thead>
         <tr>
           <th>
@@ -36,7 +37,7 @@
                 <%= cat.valor %>
               </td>
               <td>
-                <!-- <p><a href="/categoria-deletar/<%= cat.chave %>/ ">Excluir</a></p> -->
+                <p><a href="/categoria-deletar/<%= cat.chave %>/ ">Excluir</a></p>
                 <p><a onclick="document.getElementById('id01').style.display='block'" class="w3-button">Excluir</a></p>
               </td>
             </tr>
@@ -49,7 +50,7 @@
                   <td></td>
                   <% } %>
       </tbody>
-    </table>
+    </table> -->
 
     <p style="background-color: aquamarine;"><a href="/home">Inicio</a></p>
     <%- include('template/footer'); %>

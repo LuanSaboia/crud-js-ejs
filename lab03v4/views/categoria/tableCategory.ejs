@@ -1,0 +1,54 @@
+<table border>
+  <thead>
+    <tr>
+      <th>
+        Chave
+      </th>
+      <th>
+        Valor
+      </th>
+      <th>
+        Deletar
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if(categoria.length> 0) { %>
+      <% categoria.forEach(cat=> { %>
+        <tr>
+          <td>
+            <%= cat.chave %>
+          </td>
+          <td>
+            <%= cat.valor %>
+          </td>
+          <td>
+            <!-- <p><a href="/categoria-deletar/<%= cat.chave %>/ ">Excluir</a></p> -->
+            <p><a onclick="document.getElementById('id01').style.display='block'" class="w3-button">Excluir</a></p>
+          </td>
+        </tr>
+        <!-- The Modal -->
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content">
+            <div class="w3-container" style="padding: 16px;">
+              <!-- <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span> -->
+              <h5>Excluir Categoria</h5>
+              <p>Você deseja remover essa categoria?</p>
+              <p><strong>ID:</strong> <%= cat.chave %></p>
+              <p><strong>Valor:</strong> <%= cat.valor %></p>
+
+              <button type="button" onclick="document.getElementById('id01').style.display='none'" data-dismiss="modal">Não</button>
+              <button type="button" style="background-color: rgb(225, 57, 57); color: white;"><a href="/categoria-deletar/<%= cat.chave %>/ " style="text-decoration: none;">Sim</a></button>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+          <% } else { %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <% } %>
+  </tbody>
+</table>

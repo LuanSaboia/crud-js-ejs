@@ -1,0 +1,26 @@
+<table border>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Categoria</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Preço</th>
+      <th>Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% produto.forEach(product=> { %>
+    <tr>
+      <td><a href="/produto-listar/<%= product.id %>"><%= product.id %></a></td>
+      <td><%= product.dados %></td>
+      <td><%= product.nome %></td>
+      <td><%= product.descricao %></td>
+      <td><%= product.preco %></td>
+      <td>
+        <p><a href="/produto-editar/<%= product.id %>">Editar</a></p>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
