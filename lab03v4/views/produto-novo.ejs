@@ -1,0 +1,40 @@
+<%- include('template/header'); %>
+  <h1 style="background-color: aquamarine;">Loja - Produtos</h1>
+  <h2>Novo Produto</h2>
+  <form action="/produto-salvar" method="POST">
+    <label>ID:</label>
+    <% if(produto.length> 0) { %>
+      <% let idProduto=produto.length; %>
+        <input type="text" readonly id="id" name="id" value="<%= idProduto %>"><br>
+
+        <% } else { %>
+          <% let idProduto=0; %>
+        <input type="text" readonly id="id" name="id" value="<%= idProduto %>"><br>
+        <% } %>
+          <label>Nome:</label>
+          <input type="text" id="nome" name="nome" required><br>
+          <label>Categoria:</label>
+          <% if(categoria.length> 0) { %>
+            <select id="dados" name="dados">
+              <% categoria.forEach(cat=> { %>
+                <% console.log(cat) %>
+                  <option>
+                    <%= cat.valor %>
+                  </option>
+                  <% }) %>
+            </select>
+            <% } else { %>
+              <select id="dados" name="dados">
+                <option value="1"></option>
+              </select>
+              <% } %>
+                <br>
+                <label>Descrição:</label><br>
+                <textarea type="textarea" id="descricao" name="descricao" required></textarea><br><br>
+                <label>Preço:</label>
+                <input type="text" id="preco" name="preco" required><br>
+                <button>Salvar</button>
+  </form>
+
+  <p style="background-color: antiquewhite;"><a href="/home">Inicio</a></p>
+  <%- include('template/footer'); %>

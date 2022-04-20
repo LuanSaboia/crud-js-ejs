@@ -1,0 +1,129 @@
+<%- include('template/header'); %>
+    <h1>Categorias</h1>
+    <h2>Responsive Form</h2>
+<p>Resize the browser window to see the effect. When the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other.</p>
+
+<div class="container">
+  <form action="/action_page.php">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">First Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Last Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="country">Country</label>
+    </div>
+    <div class="col-75">
+      <select id="country" name="country">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">Subject</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
+  </form>
+</div>
+    <!-- <div class="w3-display-left w3-padding w3-col l6 m8">
+          <div class="w3-container w3-red">
+            <h2><i class="fa fa-bed w3-margin-right"></i>Hotel Name</h2>
+          </div>
+          <div class="w3-container w3-white w3-padding-16">
+            <form action="/action_page.php" target="_blank">
+              <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-half w3-margin-bottom">
+                  <label><i class="fa fa-calendar-o"></i> Check In</label>
+                  <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckIn" required>
+                </div>
+                <div class="w3-half">
+                  <label><i class="fa fa-calendar-o"></i> Check Out</label>
+                  <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckOut" required>
+                </div>
+              </div>
+              <div class="w3-row-padding" style="margin:8px -16px;">
+                <div class="w3-half w3-margin-bottom">
+                  <label><i class="fa fa-male"></i> Adults</label>
+                  <input class="w3-input w3-border" type="number" value="1" name="Adults" min="1" max="6">
+                </div>
+                <div class="w3-half">
+                  <label><i class="fa fa-child"></i> Kids</label>
+                <input class="w3-input w3-border" type="number" value="0" name="Kids" min="0" max="6">
+                </div>
+              </div>
+              <button class="w3-button w3-dark-grey" type="submit"><i class="fa fa-search w3-margin-right"></i> Search availability</button>
+            </form>
+          </div>
+        </div> -->
+    <!-- <form action="/categoria-salvar" method="POST">
+        <label>Chave:</label><br>
+        <input type="text" id="chave" name="chave" required><br>
+        <label>Valor:</label><br>
+        <input type="text" id="valor" name="valor" required><br><br>
+        <button type="submit">Salvar</button>
+    </form> -->
+
+    <br><br>
+    <table border>
+        <thead>
+            <tr>
+                <th>
+                    Chave
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th>
+                    Deletar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(categoria.length> 0) { %>
+                <% categoria.forEach(cat=> { %>
+                    <tr>
+                        <td>
+                            <%= cat.chave %>
+                        </td>
+                        <td>
+                            <%= cat.valor %>
+                        </td>
+                        <td>
+                            <p><a href="/categoria-deletar/<%= cat.chave %>/ ">Excluir</a></p>
+                        </td>
+                    </tr>
+                    <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <% } %>
+        </tbody>
+    </table>
+
+    <p style="background-color: aquamarine;"><a href="/home">Inicio</a></p>
+    <%- include('template/footer'); %>

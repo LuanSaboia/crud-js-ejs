@@ -1,0 +1,29 @@
+<%- include('template/header'); %>
+  <h1 style="background-color: aquamarine;">Loja - Produtos</h1>
+  <h2>Novo Produto</h2>
+  <form action="/produto-editar/<%= editProduto.id %>" method="POST">
+    <label>ID:</label>
+        <input type="text" readonly id="id" name="id" value="<%= editProduto.id %>"><br>
+          <label>Nome:</label> 
+          <input type="text" id="nome" name="nome" value="<%= editProduto.nome %>"><br>
+          <label>Categoria:</label>
+          <% if(categoria.length> 0) { %>
+            <select id="dados" name="dados">
+              <% categoria.forEach(cat=> { %>
+                <% console.log(cat) %>
+                  <option>
+                    <%= cat.valor %>
+                  </option>
+                  <% }) %>
+            </select>
+            <% } %>
+                <br>
+                <label>Descrição:</label><br>
+              <input type="textarea" id="descricao" name="descricao" value="<%= editProduto.descricao %>"><br><br>
+                <label>Preço:</label>
+                <input type="text" id="preco" name="preco" value="<%= editProduto.preco %>"><br>
+                <button>Salvar</button>
+  </form>
+
+  <p style="background-color: antiquewhite;"><a href="/home">Inicio</a></p>
+  <%- include('template/footer'); %>
