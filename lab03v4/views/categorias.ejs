@@ -5,11 +5,31 @@
     <input type="text" id="chave" name="chave" required><br>
     <label>Valor:</label><br>
     <input type="text" id="valor" name="valor" required><br><br>
+    <input type="text" id="name">
+    <button type="button" id="add-campo" onclick="adicionarCampo()"> + </button>
+    <hr style="width:20%; height:1px;border-width:0;color:gray;background-color:gray">
+    <label>Campos personalizados:</label><br>
+    <div id="formulario">
+
+    </div>
+    <hr style="width:20%; height:1px;border-width:0;color:gray;background-color:gray">
     <button type="submit">Salvar</button>
   </form>
 
-    <br><br>
-    <%- include('categoria/tableCategory'); %>
+  <script>
+    
+    //https://api.jquery.com/click/
+    function adicionarCampo() {
+      var input = document.querySelector("#name");
+      var texto = input.value;
+      console.log(texto);
+      //https://api.jquery.com/append/
+      $("#formulario").append('<input type="text" name="texto" placeholder="${texto}" required><br>');
+    };
+  </script>
+
+  <br><br>
+  <%- include('categoria/tableCategory'); %>
     <br><br>
 
     <!-- <table border>
