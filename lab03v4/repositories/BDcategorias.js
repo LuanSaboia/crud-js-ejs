@@ -2,6 +2,9 @@ let arrayCategorias = [
   {
     chave: 1,
     valor: "Filme",
+    campoPersonalizado: [
+
+    ]
   },
   // {
   //   chave: 2,
@@ -12,6 +15,9 @@ let arrayCategorias = [
   //   valor: "Jornal",
   // },
 ];
+// let campoPersonalizado = [
+  
+// ];
 
 class Category {
   addCategoria(categoria) {
