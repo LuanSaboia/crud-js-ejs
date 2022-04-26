@@ -23,7 +23,7 @@
       var texto = input.value;
       console.log(texto);
       //https://api.jquery.com/append/
-      $("#formulario").append(`<input type="text" name="campoPersonalizado" id="${texto}" required><br>`);
+      $("#formulario").append(`<label>${texto}</label><input type="text" name="campoPersonalizado" id="${texto}" required><br>`);
     };
   </script>
 
