@@ -1,6 +1,9 @@
 <%- include('template/header'); %>
   <h1 style="background-color: aquamarine;">Loja - Produtos</h1>
   <h2>Novo Produto</h2>
+  <% categoria.forEach(cat=> { %>
+    <input type="hidden" id="<%= cat.valor %>" value="<%= cat.campoPersonalizado %>"> </input>
+  <% })%> 
   <form action="/produto-salvar" method="POST">
     <label>ID:</label>
     <% if(produto.length> 0) { %>
@@ -36,14 +39,23 @@
                     <hr style="width:20%; height:1px;border-width:0;color:gray;background-color:gray">
                     <label>Campos personalizados:</label><br>
                     <div id="formulario">
-                      <% categoria.forEach(cat => { %>
-                        <% console.log(cat) %>
-                        <label><%= cat.campoPersonalizado %> </label><br>
-                      <% }) %>
+                      
                     </div>
                     <hr style="width:20%; height:1px;border-width:0;color:gray;background-color:gray">
                     <button>Salvar</button>
   </form>
+  <script>
+    // $("#dados").change(adicionarCampo(e))
+    $('#dados').on('change', function(){
+      $("#formulario").append(`<input type="text" name="campoPersonalizado" id="texto" required><br>`);
+    })
+    function adicionarCampo(e) {
+      var id = e.target.value;
+      console.log(id);
+      var input = document.querySelector("#name");
+      var texto = input.value;
+    };
+  </script>
 
   <p style="background-color: antiquewhite;"><a href="/home">Inicio</a></p>
   <%- include('template/footer'); %>

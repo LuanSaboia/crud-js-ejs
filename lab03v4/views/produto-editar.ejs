@@ -8,10 +8,10 @@
           <input type="text" id="nome" name="nome" value="<%= editProduto.nome %>"><br>
           <label>Categoria:</label>
           <% if(categoria.length> 0) { %>
-            <select id="dados" name="dados">
+            <select id="dados" name="dados" >
               <% categoria.forEach(cat=> { %>
                 <% console.log(cat) %>
-                  <option>
+                  <option <%= (editProduto.dados === cat.valor)?'selected':'' %>>
                     <%= cat.valor %>
                   </option>
                   <% }) %>

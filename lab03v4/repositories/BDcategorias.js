@@ -1,11 +1,24 @@
 let arrayCategorias = [
   {
     chave: 1,
+    valor: "Revista",
+    campoPersonalizado: [
+
+    ]
+  }, {
+    chave: 2,
     valor: "Filme",
     campoPersonalizado: [
 
     ]
+  }, {
+    chave: 3,
+    valor: "Livro",
+    campoPersonalizado: [
+
+    ]
   },
+  
   // {
   //   chave: 2,
   //   valor: "Revista",
@@ -15,12 +28,11 @@ let arrayCategorias = [
   //   valor: "Jornal",
   // },
 ];
-// let campoPersonalizado = [
-  
-// ];
 
 class Category {
   addCategoria(categoria) {
+    let custom = categoria.campoPersonalizado.toString();
+    categoria.campoPersonalizado = custom;
     arrayCategorias.push(categoria);
     return arrayCategorias;
   }
