@@ -1,0 +1,38 @@
+<%- include('template/header'); %>
+    <h1 style="background-color: aquamarine;"><span><%= title %></span> - <span>User: <%= user %></span></h1>
+  <h2><%= subTitle %></h2>
+  <button><a style="text-decoration: none;" id="addProduto" href="/produtos-cadastrar">Adicionar produto</a></button>
+  <br><br>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Criado por</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (produtos.length > 0) { %>
+        <% produtos.forEach(produto => { %>
+         <tr>
+          <td name="Id" id="<%= produto._id %>" class="buttons" data-info="<%= produto._id %>"><%= produto._id %> </td>
+          <td name="Nome" data-info="<%= produto.id %>"><%= produto.nome %> </td>
+          <td name="Categoria" data-info="<%= produto.id %>"><%= getCategoria(produto.categoria).valor %> </td>
+          <td name="Preço" data-info="<%= produto.id %>"><%= produto.preco %> </td>
+          <td name="Criado por" data-info="<%= produto.id %>"><%= produto.user %></td>
+         </tr>
+        <% }) %>
+      <% } %>
+    </tbody>
+  </table>
+  <br>
+  <button><a style="text-decoration: none;" href="/produtos">Voltar</a></button>
+
+<%- include('template/footer'); %>
+<% function getCategoria(id) {
+  return categorias.filter(categoria => Number(categoria.chave) == Number(id))[0]
+}
+%>
+

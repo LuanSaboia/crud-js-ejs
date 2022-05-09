@@ -1,0 +1,56 @@
+<%- include('template/header'); %>
+    <h1 style="background-color: aquamarine;"><%= title %> - User: <%= user %></h1>
+  <h2><%= subTitle %></h2>
+  
+  <% if (produto != null) { %>
+    <% var dados = produto %> 
+    <form method="POST" action="/produtos-editar" id="prod-form">
+      <input type="hidden" name="id" id="id" value="<%= dados.id %>">
+  <% } else { %>
+      <% var dados = { valor: null } %>
+      <form method="POST" action="/produtos-cadastrar" id="prod-form">
+  <% } %>
+
+    <div>
+      <% var key = 'nome' %>
+      <label for="<%= key %> ">Nome</label>
+      <input type="text" id="<%= key %>" name="<%= key %>" required value="<%= dados[key] %>" />
+    </div>
+    
+    <div>
+      <% var key = 'categoria' %> 
+      <label for="<%= key %>">Categoria</label>
+      <select name="<%= key %>" id="<%= key %>" required >
+        <option value="">-- Selecione --</option>
+        <% categorias.forEach(categoria => { %>
+          <% if (produto != null) { %>
+            <% if (categoria.chave == getCategoriaId(dados[key])) { %>
+              <option value="<%= categoria.chave %>" selected><%= categoria.valor %></option>
+            <% } else {%>
+              <option value="<%= categoria.chave %>"><%= categoria.valor %></option>
+            <% } %>
+          <% } else { %>
+            <option value="<%= categoria.chave %>"><%= categoria.valor %></option>
+          <% } %> 
+        <% }) %>
+      </select>
+    </div>
+    <div>
+      <% var key = 'desc' %>
+      <label for="<%= key %> ">Descrição</label>
+          <textarea id="<%= key %>" name="<%= key %>" required><%= dados[key] %></textarea>
+    </div>
+    <div>
+      <% var key = 'preco' %>
+      <label for="<%= key %> ">Preço</label>
+      <input type="text" id="<%= key %>" name="<%= key %>" required value="<%= dados[key] %>" />
+    </div>
+   
+  </form>
+    <button type="submit" form="prod-form">Salvar</button>
+    <button><a style="text-decoration: none;" href="/produtos">Voltar</a></button>
+
+<%- include('template/footer'); %>
+<% function getCategoriaId(id) {
+  return categorias.filter(categoria => Number(categoria.chave) == Number(id))[0].chave
+} %>
